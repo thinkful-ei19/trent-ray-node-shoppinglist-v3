@@ -57,6 +57,13 @@ app.delete('/shopping-list/:id', (req, res) => {
 // when new recipe added, ensure has required fields. if not,
 // log error and return 400 status code with hepful message.
 // if okay, add new item, and return it with a status 201.
+app.delete('/recipes/:id', (req, res) => {
+  Recipes.delete(req.params.id);
+  console.log(`Deleted shopping list item ${req.params.id}`);
+  res.status(204).end();
+});
+
+
 app.post('/recipes', jsonParser, (req, res) => {
   // ensure `name` and `budget` are in request body
   const requiredFields = ['name', 'ingredients'];
